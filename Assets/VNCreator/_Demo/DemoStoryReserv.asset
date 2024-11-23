@@ -10,28 +10,46 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d55d090c78b6240aa6dccd6042a022, type: 3}
-  m_Name: DemoStory
+  m_Name: DemoStoryReserv
   m_EditorClassIdentifier: 
   links:
+  - guid: 43443b6a-8fc6-4ee0-b9e4-3b5ab85f09fa
+    targetGuid: cfe25e6b-3c07-4716-b1e2-e77f81ab3b2f
+    portId: 0
   - guid: cfe25e6b-3c07-4716-b1e2-e77f81ab3b2f
     targetGuid: 431c40f2-9d68-495c-a2d2-30a993e9f18c
-    portId: 0
-  - guid: 431c40f2-9d68-495c-a2d2-30a993e9f18c
-    targetGuid: 71c7307d-a03c-48d1-8f37-156bc5b1edbe
     portId: 1
   - guid: 431c40f2-9d68-495c-a2d2-30a993e9f18c
-    targetGuid: bdfa56de-447b-42b4-ac61-1bc01f9ad49c
+    targetGuid: 71c7307d-a03c-48d1-8f37-156bc5b1edbe
     portId: 2
+  - guid: 431c40f2-9d68-495c-a2d2-30a993e9f18c
+    targetGuid: bdfa56de-447b-42b4-ac61-1bc01f9ad49c
+    portId: 3
   - guid: 71c7307d-a03c-48d1-8f37-156bc5b1edbe
     targetGuid: 1cc55e00-ccd1-47a1-9774-c54127a043ef
-    portId: 3
+    portId: 4
   - guid: bdfa56de-447b-42b4-ac61-1bc01f9ad49c
     targetGuid: 1e23bf54-9afd-47c6-ba76-942101512a55
-    portId: 4
-  - guid: 43443b6a-8fc6-4ee0-b9e4-3b5ab85f09fa
-    targetGuid: 431c40f2-9d68-495c-a2d2-30a993e9f18c
     portId: 5
   nodes:
+  - guid: 43443b6a-8fc6-4ee0-b9e4-3b5ab85f09fa
+    characterSpr: {fileID: 21300000, guid: e89e94c938bf20549b956865c8ecab8d, type: 3}
+    characterName: Coon
+    dialogueText: 123
+    backgroundSpr: {fileID: 21300000, guid: 375910f00bc5ed64b8b7415a00664f88, type: 3}
+    startNode: 1
+    endNode: 0
+    choices: 1
+    choiceOptions:
+    - 
+    nodePosition:
+      serializedVersion: 2
+      x: 317
+      y: 373
+      width: 499
+      height: 305
+    soundEffect: {fileID: 0}
+    backgroundMusic: {fileID: 8300000, guid: 60cbbe24b7112a94992bed39df6325ed, type: 3}
   - guid: cfe25e6b-3c07-4716-b1e2-e77f81ab3b2f
     characterSpr: {fileID: 21300000, guid: 59761d37806f3244ba77b4b23f66b5a4, type: 3}
     characterName: Rambear
@@ -141,21 +159,3 @@ MonoBehaviour:
       height: 305
     soundEffect: {fileID: 0}
     backgroundMusic: {fileID: 0}
-  - guid: 43443b6a-8fc6-4ee0-b9e4-3b5ab85f09fa
-    characterSpr: {fileID: 21300000, guid: e89e94c938bf20549b956865c8ecab8d, type: 3}
-    characterName: Coon
-    dialogueText: 12
-    backgroundSpr: {fileID: 21300000, guid: 375910f00bc5ed64b8b7415a00664f88, type: 3}
-    startNode: 1
-    endNode: 0
-    choices: 1
-    choiceOptions:
-    - 
-    nodePosition:
-      serializedVersion: 2
-      x: 992
-      y: 713
-      width: 499
-      height: 305
-    soundEffect: {fileID: 0}
-    backgroundMusic: {fileID: 8300000, guid: 60cbbe24b7112a94992bed39df6325ed, type: 3}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -32,8 +33,11 @@ namespace VNCreator
         [Scene]
         public string mainMenu;
 
+
+
         void Start()
         {
+
             nextBtn.onClick.AddListener(delegate { NextNode(0); });
             if(previousBtn != null)
                 previousBtn.onClick.AddListener(Previous);
