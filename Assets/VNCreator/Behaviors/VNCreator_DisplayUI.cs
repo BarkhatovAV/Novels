@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using GamePush;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEngine;
@@ -32,8 +33,7 @@ namespace VNCreator
         [Header("Main menu")]
         [Scene]
         public string mainMenu;
-
-
+        private int _nextClickCounter;
 
         void Start()
         {
@@ -60,6 +60,9 @@ namespace VNCreator
 
         protected override void NextNode(int _choiceId)
         {
+            _nextClickCounter++;
+            GP_Analytics.Goal("Next", _nextClickCounter.ToString());
+
             if (lastNode)
             {
                 endScreen.SetActive(true);
@@ -72,6 +75,8 @@ namespace VNCreator
 
         IEnumerator DisplayCurrentNode()
         {
+            nextBtn.gameObject.SetActive(true);
+            previousBtn.gameObject.SetActive(false);
             characterNameTxt.text = currentNode.characterName;
             if (currentNode.characterSpr != null)
             {
@@ -93,7 +98,7 @@ namespace VNCreator
                 choiceBtn2.gameObject.SetActive(false);
                 choiceBtn3.gameObject.SetActive(false);
 
-                previousBtn.gameObject.SetActive(loadList.Count != 1);
+                //previousBtn.gameObject.SetActive(loadList.Count != 1);
             }
             else
             {
@@ -131,14 +136,16 @@ namespace VNCreator
             }
             else
             {
+                nextBtn.gameObject.SetActive(false);
                 char[] _chars = currentNode.dialogueText.ToCharArray();
                 string fullString = string.Empty;
                 for (int i = 0; i < _chars.Length; i++)
                 {
                     fullString += _chars[i];
                     dialogueTxt.text = fullString;
-                    yield return new WaitForSeconds(0.01f/ GameOptions.readSpeed);
+                    yield return new WaitForSeconds(0.02f/ GameOptions.readSpeed);
                 }
+                nextBtn.gameObject.SetActive(true);
             }
         }
 

@@ -26,21 +26,25 @@ public class AdManagerNovels : MonoBehaviour
     private float _time = 120;
     private bool _canShow = false;
 
-    private IEnumerator Start()
+
+
+    private void Start()
     {
-        GameAnalytics.Initialize();
+        Debug.Log("_______VARIABLES: GET STRING " + GP_Variables.GetString("Ad"));
+        string conf = GP_Variables.GetString("Ad");
+        //GameAnalytics.Initialize();
 
-        while (GameAnalytics.IsRemoteConfigsReady() == false)
-        {
-            yield return new WaitForSeconds(1);
-        }
+        //while (GameAnalytics.IsRemoteConfigsReady() == false)
+        //{
+        //    yield return new WaitForSeconds(1);
+        //}
 
-        Debug.Log($"CONFIG CONTENT = {GameAnalytics.GetRemoteConfigsContentAsString()}");
+        //Debug.Log($"CONFIG CONTENT = {GameAnalytics.GetRemoteConfigsContentAsString()}");
 
-        string conf = GameAnalytics.GetRemoteConfigsValueAsString("Ad");
+        //string conf = GameAnalytics.GetRemoteConfigsValueAsString("Ad");
 
-    if (conf == "On")
-        _canShow = true;
+        if (conf == "On")
+            _canShow = true;
     }
 
     public void ShowInterstitialAd(Action onShowCallback = null, Action<bool> onCloseCallback = null)

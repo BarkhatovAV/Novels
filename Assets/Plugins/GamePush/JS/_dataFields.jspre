@@ -1,4 +1,4 @@
-const dataProjectId = '17931';
-const dataPublicToken = 'cdx3OpueZrcHbYL9FWIWOvtgu94cPMB2';
+const dataProjectId = '18763';
+const dataPublicToken = '5ShAfdaUVSiO9TfsUzfUeqGQUKwwFs9D';
 const showPreloaderAd = 'False';
 const autocallGameReady = 'True';
