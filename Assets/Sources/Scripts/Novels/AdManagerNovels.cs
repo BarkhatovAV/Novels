@@ -9,12 +9,25 @@ using GameAnalyticsSDK;
 
 public class AdManagerNovels : MonoBehaviour
 {
-    [SerializeField] private ButtonHoverHandler _VNCreator;
+    [SerializeField] private List<ButtonHoverHandler> _buttonHoverHandlers;
+    [SerializeField] private StartGame _startGame;
 
     private void OnEnable()
     {
-        _VNCreator.OnHover += OnHovered;
-        _VNCreator.OnHover += OnHovered;
+        foreach (ButtonHoverHandler item in _buttonHoverHandlers)
+        {
+            item.OnHover += OnHovered;
+        }
+        _startGame.SDKReady += OnReady;
+    }
+
+    private void OnDisable()
+    {
+        foreach (ButtonHoverHandler item in _buttonHoverHandlers)
+        {
+            item.OnHover -= OnHovered;
+        }
+        _startGame.SDKReady -= OnReady;
     }
 
     private void OnHovered()
@@ -26,9 +39,15 @@ public class AdManagerNovels : MonoBehaviour
     private float _time = 120;
     private bool _canShow = false;
 
-
-
     private void Start()
+    {
+        if (GP_Init.isReady)
+        {
+            OnReady();
+        }
+    }
+
+    private void OnReady()
     {
         Debug.Log("_______VARIABLES: GET STRING " + GP_Variables.GetString("Ad"));
         string conf = GP_Variables.GetString("Ad");

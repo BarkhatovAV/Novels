@@ -1,7 +1,8 @@
-﻿using GamePush;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Plastic.Newtonsoft.Json.Serialization;
+//using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -34,6 +35,7 @@ namespace VNCreator
         [Scene]
         public string mainMenu;
         private int _nextClickCounter;
+        public event Action NextDowned;
 
         void Start()
         {
@@ -60,9 +62,8 @@ namespace VNCreator
 
         protected override void NextNode(int _choiceId)
         {
-            _nextClickCounter++;
-            GP_Analytics.Goal("Next", _nextClickCounter.ToString());
 
+            NextDowned?.Invoke();
             if (lastNode)
             {
                 endScreen.SetActive(true);
@@ -75,7 +76,7 @@ namespace VNCreator
 
         IEnumerator DisplayCurrentNode()
         {
-            nextBtn.gameObject.SetActive(true);
+            //nextBtn.gameObject.SetActive(true);
             previousBtn.gameObject.SetActive(false);
             characterNameTxt.text = currentNode.characterName;
             if (currentNode.characterSpr != null)
@@ -143,9 +144,10 @@ namespace VNCreator
                 {
                     fullString += _chars[i];
                     dialogueTxt.text = fullString;
-                    yield return new WaitForSeconds(0.02f/ GameOptions.readSpeed);
+                    yield return new WaitForSeconds(0.03f/ GameOptions.readSpeed);
                 }
-                nextBtn.gameObject.SetActive(true);
+                if (currentNode.choices <= 1)
+                    nextBtn.gameObject.SetActive(true);
             }
         }
 

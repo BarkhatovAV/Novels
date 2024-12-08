@@ -3,9 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GamePush;
+using System;
 
 public class StartGame : MonoBehaviour
 {
+    private bool _canShow;
+    public event Action SDKReady;
+
+    public bool CanShowAd { get; private set; }
     //#if YANDEX_GAMES && !UNITY_EDITOR
     //        private IEnumerator Start()
     //        {
@@ -23,6 +28,8 @@ public class StartGame : MonoBehaviour
     private async void Start()
     {
         await GP_Init.Ready;
+        SDKReady?.Invoke();
+
         OnPluginReady();
     }
 
