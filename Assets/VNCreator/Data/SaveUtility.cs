@@ -92,6 +92,8 @@ namespace VNCreator
 
         void LinkNodes(Port _output, Port _input, ExtendedGraphView _graph)
         {
+            if (_output == null)
+                return;
             //Debug.Log(_output);
 
             Edge _temp = new Edge
