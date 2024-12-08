@@ -26,21 +26,21 @@ MonoBehaviour:
   UserMessagesFailed: 0
   CustomArea: 
   gameKey:
-  - 80b0c7a3533506602d702f0933893d14
+  - 2216fc7bd56c7baa1584a961c566184b
   secretKey:
-  - d3c094fb4c1cfc9643977c6d7c38751e0e07c110
+  - 3039a7602ec775a175180ffdc15b2a505c4ccb24
   Build:
   - 0.1
   SelectedPlatformOrganization:
-  - Svetic
+  - 
   SelectedPlatformStudio:
-  - My
+  - 
   SelectedPlatformGame:
-  - "\u0421 \u0414\u0420"
-  SelectedPlatformGameID: 44290400
-  SelectedOrganization: 01000000
-  SelectedStudio: 01000000
-  SelectedGame: 01000000
+  - 
+  SelectedPlatformGameID: ffffffff
+  SelectedOrganization: 00000000
+  SelectedStudio: 00000000
+  SelectedGame: 00000000
   NewVersion: 
   Changes: 
   SignUpOpen: 0

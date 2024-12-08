@@ -6,8 +6,8 @@ namespace VNCreator
 {
     public static class GameOptions
     {
-        public static float musicVolume = 0.5f;
-        public static float sfxVolume = 0.5f;
+        public static float musicVolume = 0.1f;
+        public static float sfxVolume = 0.1f;
         public static float readSpeed = 0.5f;
         public static bool isInstantText = false;
 

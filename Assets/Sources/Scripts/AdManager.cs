@@ -1,12 +1,12 @@
-using Agava.YandexGames;
+using GamePush;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GamePush;
 
 public class AdManager : MonoBehaviour
 {
+
     private bool _isFullScreenAvailable = true;
     private float _time = 120;
 
@@ -37,9 +37,9 @@ public class AdManager : MonoBehaviour
     public void ShowRewardAd(Action onOpenCallback = null, Action onRewardedCallback = null, Action onCloseCallback = null)
     {
 
-//#if YANDEX_GAMES && !UNITY_EDITOR
-//        Agava.YandexGames.VideoAd.Show(onOpenCallback, onRewardedCallback, onCloseCallback);
-//#endif
+        //#if YANDEX_GAMES && !UNITY_EDITOR
+        //        Agava.YandexGames.VideoAd.Show(onOpenCallback, onRewardedCallback, onCloseCallback);
+        //#endif
 
 
 
@@ -50,4 +50,5 @@ public class AdManager : MonoBehaviour
 #endif
 
     }
+
 }

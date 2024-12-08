@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿
+using System;
+using System.Collections;
 using System.Collections.Generic;
+//using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -31,9 +34,12 @@ namespace VNCreator
         [Header("Main menu")]
         [Scene]
         public string mainMenu;
+        private int _nextClickCounter;
+        public event Action NextDowned;
 
         void Start()
         {
+
             nextBtn.onClick.AddListener(delegate { NextNode(0); });
             if(previousBtn != null)
                 previousBtn.onClick.AddListener(Previous);
@@ -56,6 +62,8 @@ namespace VNCreator
 
         protected override void NextNode(int _choiceId)
         {
+
+            NextDowned?.Invoke();
             if (lastNode)
             {
                 endScreen.SetActive(true);
@@ -68,6 +76,8 @@ namespace VNCreator
 
         IEnumerator DisplayCurrentNode()
         {
+            //nextBtn.gameObject.SetActive(true);
+            previousBtn.gameObject.SetActive(false);
             characterNameTxt.text = currentNode.characterName;
             if (currentNode.characterSpr != null)
             {
@@ -89,7 +99,7 @@ namespace VNCreator
                 choiceBtn2.gameObject.SetActive(false);
                 choiceBtn3.gameObject.SetActive(false);
 
-                previousBtn.gameObject.SetActive(loadList.Count != 1);
+                //previousBtn.gameObject.SetActive(loadList.Count != 1);
             }
             else
             {
@@ -127,14 +137,17 @@ namespace VNCreator
             }
             else
             {
+                nextBtn.gameObject.SetActive(false);
                 char[] _chars = currentNode.dialogueText.ToCharArray();
                 string fullString = string.Empty;
                 for (int i = 0; i < _chars.Length; i++)
                 {
                     fullString += _chars[i];
                     dialogueTxt.text = fullString;
-                    yield return new WaitForSeconds(0.01f/ GameOptions.readSpeed);
+                    yield return new WaitForSeconds(0.03f/ GameOptions.readSpeed);
                 }
+                if (currentNode.choices <= 1)
+                    nextBtn.gameObject.SetActive(true);
             }
         }
 
